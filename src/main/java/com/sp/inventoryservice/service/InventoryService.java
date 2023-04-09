@@ -9,11 +9,10 @@ import com.sp.inventoryservice.dto.InventoryResponse;
 import com.sp.inventoryservice.repository.InventoryRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
+// @Slf4j
 public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
@@ -22,13 +21,13 @@ public class InventoryService {
     public List<InventoryResponse> isInStock(List<String> skuCode) {
         // Uncomment to Simulate a long running process
         // This is to demonstrate the TimeLimiter feature
-        log.info("Wait Started");
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        log.info("Wait Ended");
+        // log.info("Wait Started");
+        // try {
+        // Thread.sleep(10000);
+        // } catch (InterruptedException e) {
+        // e.printStackTrace();
+        // }
+        // log.info("Wait Ended");
 
         return inventoryRepository.findBySkuCodeIn(skuCode).stream()
                 .map(inventory -> InventoryResponse.builder()
